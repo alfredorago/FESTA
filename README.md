@@ -8,7 +8,5 @@ The latter can be further normalized to proportions of the total gene expression
 For more information, refer to the paper in the Doc Folder.
 
 This repository serves two purposes:
-  1) Document the scripts used in the paper Rago et al.
-  2) Make the implementation available for more users.
-
-A complete package is currently under development
+  1) Document the scripts used in the paper Rago et al. (Folder RagoEtAl)
+  2) Make the implementation available for more users (Work in progress)
