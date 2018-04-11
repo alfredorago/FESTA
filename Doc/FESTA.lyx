@@ -532,7 +532,7 @@ I present an intuitive method for the detection of transcription and splicing
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "../../Thesis/PostViva_Revisions/library,library"
+bibfiles "library"
 options "plain"
 
 \end_inset
