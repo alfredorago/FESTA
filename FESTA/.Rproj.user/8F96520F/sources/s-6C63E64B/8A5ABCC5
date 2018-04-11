@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1523460058641.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "392824022",
+    "id" : "8A5ABCC5",
+    "lastKnownWriteTime" : 1523464004,
+    "last_content_update" : 1523464004453,
+    "path" : "C:/Users/Alfredo/Dropbox/PhD/Papers/FESTA/FESTA/R/gen_testdata.R",
+    "project_path" : "R/gen_testdata.R",
+    "properties" : {
+        "cursorPosition" : "13,62",
+        "scrollLine" : "10",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

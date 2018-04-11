@@ -1,21 +1,34 @@
 ## FESTA algorithm
+# Load required packages and utility functions
+require(amap)
+require(plyr)
 
 ##### Splicing detection
 ##### Cluster genes according to reciprocal correlations, then iteratively cut tree (bottom up) until one cluster is the most expressed or tied for expression across all samples. Uses hcluster from amap package for clustering
 
 ## Required input data:
-## data.frame with one row per exon and one column per sample, plus
+## data.frame with one row per exon and one column per sample, plus 
 ## "geneID" column with unique gene identifier
 ## "exonID" column with unique exon identifier
 
+# Example data
+# geneID <- paste("gene",100:500, sep = "")
+# exonID <- paste(merge(geneID,c(1:10))[,1], merge(geneID,c(1:10))[,2],sep = "exon")
+# exprData <- matrix(log2(rbinom(n = 4010*10, size = 1000, prob = .3)), ncol = 10)
+# exampleData <- data.frame(geneID = geneID, 
+#                           exonID = exonID, 
+#                           Evalue = exprData)
+
 ## Parameter description
-## exceptions:
+## exceptions: 
 ## signDigits: number of digits rounded from expression scores for ranking calculations
 ## distMethod: distance metric used by the clustering algorithm (default: correlation), see function hcluster from package amap for more information
 ## link: agglomeration method used by the clustering algorithm (default: complete), see function hcluster from package amap for more information
 ## nbproc: number of subprocess for parallelization (default: 1), see function hcluster from package amap for more information
 
 ClusterExons <- function(data = NULL, exceptions = ceiling(x = (ncol(data)-2)*.1), signDigits = 3, distMethod = "correlation", link = "complete", nbproc = 1) {
+  require(amap)
+  require(plyr)
   ExonAssTable <- list()
   exceptions <- exceptions/(ncol(data)-2)
   row.names(data) <- data$exonID
@@ -58,11 +71,13 @@ ClusterExons <- function(data = NULL, exceptions = ceiling(x = (ncol(data)-2)*.1
               break} else {next}}}
     }
   }
-  ExonAssTable<-ldply(ExonAssTable,rbind)
+  
+  # this step causes problem in R below version 2
+  ExonAssTable<-ldply(ExonAssTable,rbind) 
   names(ExonAssTable)[1]<-"geneID"
   # assign constitutive/specific status
   ExonAssTable$constitutive<-ifelse((ExonAssTable$clusterranks>=(1-exceptions)),"constitutive","facultative")
-  # merge cluster assignments into unique IDs with designation of constitutiveness
+  # merge cluster assignments into unique IDs with designation of constitutiveness 
   ExonAssTable$transcriptID<-as.factor(paste0(ExonAssTable$geneID, "_t", ExonAssTable$clusters, ifelse(ExonAssTable$constitutive=="constitutive", "_con","_fac"), sep=""))
   # code ID variables as factors
   ExonAssTable$geneID <- as.factor(ExonAssTable$geneID)
@@ -76,7 +91,7 @@ ClusterExons <- function(data = NULL, exceptions = ceiling(x = (ncol(data)-2)*.1
 ##### Average expression values based on unique eigenexon IDs
 
 ## Required input data:
-## data.frame with one row per exon and one column per sample, plus
+## data.frame with one row per exon and one column per sample, plus 
 ## "geneID" column with unique gene identifier
 ## "transcriptID" column with unique exon identifier as per assigned via ClusterExons
 ## "constitutive" column identifying which transcripts are from constitutive nodes as per assigned via ClusterExons
