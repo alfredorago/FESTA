@@ -108,10 +108,13 @@ ClusterExons <- function(data = NULL, exonID  = NULL,
 #' @param spliceID A data.frame. Output from the \code{\link{ClusterExons}} function.
 #' @param splicingRatios Logical. If FALSE, expression from all entries is reported on the same scale. If TRUE, expression from splicing entries is normalized by their gene's constitutive expression score, generating splicing ratios.
 #' @param NAcorrection: Logical. Applicable only if splicingRatios is TRUE. If TRUE, splicing ratios higher than 1 are set to 1 and NA/NaN/infinity values to 0. This accounts for experimental error in measurements.
+#' @examples
+#'  ExonAssignment = ClusterExons(data = SIRV_data$tpm, exonID = SIRV_data$ID)
+#'  AverageExons(SIRV_data$tpm, ExonAssignment)
 
 AverageExons <- function(data = NULL, spliceID = NULL, splicingRatios = F, NAcorrection = F){
   spliceID = spliceID[,c("geneID", "transcriptID", "constitutive")]
-  data = rbind(spliceID, data.frame(data))
+  data = cbind(spliceID, data.frame(data))
   if (splicingRatios == F) {
     out <- plyr::ddply(.data = data, .variables = plyr::.(transcriptID), plyr::numcolwise(median), na.rm = T)
     out[order(out$transcriptID),]

@@ -19,3 +19,7 @@ AverageExons(data = NULL, spliceID = NULL, splicingRatios = F,
 \description{
 Average expression values based on unique eigenexon IDs
 }
+\examples{
+ ExonAssignment = ClusterExons(data = SIRV_data$tpm, exonID = SIRV_data$ID)
+ AverageExons(SIRV_data$tpm, ExonAssignment)
+}
