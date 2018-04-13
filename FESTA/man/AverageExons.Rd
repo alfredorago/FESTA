@@ -14,7 +14,12 @@ AverageExons(data = NULL, spliceID = NULL, splicingRatios = F,
 
 \item{splicingRatios}{Logical. If FALSE, expression from all entries is reported on the same scale. If TRUE, expression from splicing entries is normalized by their gene's constitutive expression score, generating splicing ratios.}
 
-\item{NAcorrection:}{Logical. Applicable only if splicingRatios is TRUE. If TRUE, splicing ratios higher than 1 are set to 1 and NA/NaN/infinity values to 0. This accounts for experimental error in measurements.}
+\item{NAcorrection:}{Logical. Applicable only if \code{splicingRatios = TRUE}. If \code{TRUE}, splicing ratios higher than 1 are set to 1 and NA/NaN/infinity values are set to 0. This accounts for experimental error in measurements.}
+}
+\value{
+A data.frame with one column per sample and one row per exon group.
+If \code{splicingRatios = F}, entries report the average expression of all exons in the exon group.
+If \code{splicingRatios = T}, constitutive exon groups report the average expression of their exons and facultative exons report their average expression normalized to the average expression of their gene's constitutive exons group (splicing ratio).
 }
 \description{
 Average expression values based on unique eigenexon IDs
