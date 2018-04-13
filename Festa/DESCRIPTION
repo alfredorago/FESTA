@@ -14,8 +14,7 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.0.0)
-Imports:
-  amap,
+Imports: amap,
   plyr
 RoxygenNote: 6.0.1
 Suggests: knitr,
