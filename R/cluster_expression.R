@@ -116,6 +116,8 @@ ClusterExons <- function(data = NULL, exonID  = NULL,
 #' @examples
 #'  ExonAssignment = ClusterExons(data = SIRV_data$tpm, exonID = SIRV_data$ID)
 #'  AverageExons(SIRV_data$tpm, ExonAssignment)
+#'
+#' @export
 
 AverageExons <- function(data = NULL, spliceID = NULL, splicingRatios = F, NAcorrection = F){
   spliceID = spliceID[,c("geneID", "transcriptID", "constitutive")]
