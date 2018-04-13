@@ -30,7 +30,7 @@ ClusterExons <- function(data = NULL, exonID  = NULL,
                          distMethod = "correlation", link = "complete", nbproc = 1) {
   ExonAssTable    <- list()
   exceptions      <- exceptions/ncol(data)
-  data <- rbind(exonID, as.data.frame(data))
+  data <- cbind(exonID, as.data.frame(data))
   row.names(data) <- data$exonID
   for (gID in unique(data$geneID)){
 # Subset only exons within one gene ID, removing ID columns
