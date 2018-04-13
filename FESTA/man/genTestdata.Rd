@@ -14,9 +14,9 @@ genTestdata(nGenes, nExons, nSamples)
 \item{nSamples}{An integer, specifies the number of samples in the dataset.}
 }
 \value{
-A data.frame with nGenes*nExons rows and 2+nSamples columns. \newline
-The first 2 columns contain gene and exon ID
-Further columns contain log2 transformed expression scores
+A data.frame with nGenes*nExons rows and 2+nSamples columns.
+The first 2 columns contain gene and exon ID.
+Further columns contain log2 transformed expression scores.
 }
 \description{
 This function creates a sample test dataset for the ClusterExons function.
