@@ -73,7 +73,7 @@ ClusterExons <- function(data = NULL, exonID  = NULL,
               #annotate subcluster ranks with subcluster IDs
               clusters$clusters <- c(1:nrow(clusters))
               # merge exon with subcluster ID and ranks
-              matchmaker <- join(matchmaker, clusters, by="clusters", type="left")
+              matchmaker <- plyr::join(matchmaker, clusters, by="clusters", type="left")
               # add exon names
               row.names(matchmaker) <- row.names(Evalues)
               matchmaker$exonID <- row.names(matchmaker)
