@@ -131,7 +131,7 @@ AverageExons <- function(data = NULL, spliceID = NULL, splicingRatios = F, NAcor
       Spl/Con
     })
     FacSplicing <- cbind(FacTranscripts[,c("geneID","transcriptID")], plyr::ldply(FacSplicing))
-    if (NAcorr == T) {
+    if (NAcorrection == T) {
       # set NA/NaN and infinity scores to 0, set scores greater than 1 to 1
       FacSplicing[,sapply(FacSplicing, is.numeric)] <- apply(FacSplicing[,sapply(FacSplicing, is.numeric)],c(1,2),function(x){
         as.numeric(ifelse(is.na(x), 0, x))})
