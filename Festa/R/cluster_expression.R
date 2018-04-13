@@ -122,7 +122,7 @@ AverageExons <- function(data = NULL, spliceID = NULL, splicingRatios = F, NAcor
     ## split into constitutives and facultatives
     ConTranscripts <- data[which(data$constitutive=="constitutive"),]
     FacTranscripts <- data[which(data$constitutive!="constitutive"),]
-    ## average exon values within transcripts (convert to single call, split downstream)
+    ## average exon values within transcripts
     ConTranscripts <- plyr::ddply(ConTranscripts, .variables = plyr::.(geneID, transcriptID), plyr::numcolwise(median), na.rm = T)
     FacTranscripts <- plyr::ddply(FacTranscripts, .variables = plyr::.(geneID, transcriptID), plyr::numcolwise(median), na.rm = T)
     FacSplicing <- apply(FacTranscripts, 1, function(Fac){
