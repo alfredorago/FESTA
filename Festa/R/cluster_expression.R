@@ -23,6 +23,8 @@
 #' \item{constitutive}{Identifies whether the exon group is constitutive (main gene) or facultative (isoform).}
 #' \item{transcriptID}{Identifier for each exon group detected. Ends in '_con' for constitutive and '_fac' for facultative exons.}
 #' }
+#' @examples
+#'  ExonAssignment = ClusterExons(data = SIRV_data$tpm, exonID = SIRV_data$ID)
 #'
 #' @export
 ClusterExons <- function(data = NULL, exonID  = NULL,

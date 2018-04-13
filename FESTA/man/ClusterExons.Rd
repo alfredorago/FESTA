@@ -41,3 +41,7 @@ Cluster genes according to reciprocal correlations, then iteratively cut tree (b
 until one cluster is the most expressed or tied for expression across all samples.
 Uses \code{\link[amap:hcluster]{hcluster}} from amap package for clustering
 }
+\examples{
+ ExonAssignment = ClusterExons(data = SIRV_data$tpm, exonID = SIRV_data$ID)
+
+}
