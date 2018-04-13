@@ -23,7 +23,7 @@ genTestdata = function(nGenes, nExons, nSamples){
   exonTable = merge(geneID,c(1:nExons))
   exonID    = paste(exonTable[ ,1],
                     exonTable[ ,2],
-                    sep = "exon")
+                    sep = "e")
   exprData  = matrix(
     rbinom(n = nExons*nSamples, size = 1000, prob = .3),
     ncol = nSamples)
