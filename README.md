@@ -6,7 +6,7 @@ The only input files required are a count table and an annotation table that mat
 The output contains expression values for both the main gene and its isoform.
 The latter can be further normalized to proportions of the total gene expression.
 For more information, refer to the manuscript here:
-https://github.com/alfredorago/FESTA
+https://t.co/x3fXoaO2JX
 
 # Installation
 The package can be installed from R via devtools:
